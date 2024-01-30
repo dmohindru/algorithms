@@ -1,0 +1,48 @@
+// 1.1.16
+Give the value of exR1(6)
+public static String exR1(int n)
+{
+   if (n <= 0) return "";
+   return exR1(n-3) + n + exR1(n-2) + n;
+}
+
+ans: exR1(6)
+call stack 1 exR1(6):
+return exR1(3) + 6 + exR1(4) + 6 = 31136114226
+
+call stack 2 exR1(3):
+return exR1(0) + 3 + exR1(1) + 3 = 3113 <------
+
+call stack 3 exR1(0)
+return ""
+
+call stack 4 exR1(1)
+return exR1(-2) + 1 + exR1(-1) + 1 = 11
+
+call stack 5 exR1(-2)
+return ""
+
+call stack 6 exR1(-1)
+return ""
+
+call stack 7 exR1(4)
+return exR1(1) + 4 + exR1(2) + 4 = 114224 <-----
+
+call stack 8 exR1(1)
+return exR1(-2) + 1 + exR1(-1) + 1 = 11
+
+call stack 9 exR1(-2)
+return ""
+
+call stack 10 exR1(-1)
+return ""
+
+call stack 11 exR1(2)
+return exR1(-1) + 2 + exR1(0) + 2 = 22
+
+call stack 12 exR1(-1)
+return ""
+
+call stack 13 exR1(0)
+return ""
+
