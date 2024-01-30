@@ -1,0 +1,9 @@
+1.1.8
+a) System.out.println('b');
+ans: b
+
+b) System.out.println('b' + 'c');
+ans: 197
+
+c) System.out.println((char) ('a' + 4));
+ans: e

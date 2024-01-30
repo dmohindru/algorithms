@@ -1,3 +1,4 @@
+1.1.4
 a. if (a > b) then c = 0; ==> There is no then statement in java
 b. if a > b { c = 0; } ==> comparison statement has to be in parenthesis ()
 c. if (a > b) c = 0; ==> Nothing wrong here
