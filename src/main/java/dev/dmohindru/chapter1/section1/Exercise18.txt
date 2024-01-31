@@ -1,0 +1,98 @@
+1.1.18
+
+public static int mystery(int a, int b)
+{
+   if (b == 0) return 0;
+   if (b % 2 == 0) return mystery(a+a, b/2);
+   return mystery(a+a, b/2) + a;
+}
+
+// above recursive function computes a * b
+
+------
+mystery(2, 25) = 50
+
+call stack 1 - mystery(2, 25)
+return mystery(4, 12) + 2 = 48 + 2 = 50
+
+call stack 2 - mystery(4, 12)
+return mystery(8, 6) = 48
+
+call stack 3 - mystery(8, 6)
+return mystery(16, 3) = 48
+
+call stack 4 - mystery(16, 3)
+return mystery(32, 1) + 16 = 32 + 16 = 48
+
+call stack 5 - mystery(32, 1)
+return mystery(64, 0) + 32 = 0 + 32 = 32
+
+call stack 6 - mystery(64, 0)
+return 0
+-----
+mystery(3, 11) = 33
+
+call stack 1 mystery(3, 11)
+return mystery(6, 5) + 3 = 30 + 3 = 33
+
+call stack 2 mystery(6, 5)
+return mystery(12, 2) + 6 = 24 + 6 = 30
+
+call stack 3 mystery(12, 2)
+return mystery(24, 1) = 24
+
+call stack 4 mystery(24, 1)
+return mystery(48, 0) + 24 = 0 + 24 = 24
+
+call stack 5 mystery(48, 0)
+return 0
+----
+
+public static int mystery(int a, int b)
+{
+   if (b == 0) return 1;
+   if (b % 2 == 0) return mystery(a*a, b/2);
+   return mystery(a*a, b/2) * a;
+}
+
+// Above code calculates a^b
+
+------
+mystery(2, 25) = 33554432
+
+call stack 1 - mystery(2, 25)
+return mystery(4, 12) * 2 = 16777216 * 2 = 33554432
+
+call stack 2 - mystery(4, 12)
+return mystery(16, 6) = 16777216
+
+call stack 3 - mystery(16, 6)
+return mystery(256, 3) = 16777216
+
+call stack 4 - mystery(256, 3)
+return mystery(65536, 1) * 256 = 65536 * 256 = 16777216
+
+call stack 5 - mystery(65536, 1)
+return mystery(64, 0) * 65536 = 1 * 65536 = 65536
+
+call stack 6 - mystery(4294967296, 0)
+return 1
+-----
+
+mystery(3, 11)
+
+call stack 1 mystery(3, 11) = 177147
+return mystery(9, 5) * 3 = 59049 * 3 =
+
+call stack 2 mystery(9, 5)
+return mystery(81, 2) * 9 = 6561 * 9 = 59049
+
+call stack 3 mystery(81, 2)
+return mystery(6561, 1) = 6561
+
+call stack 4 mystery(6561, 1)
+return mystery(43046721, 0) * 6561 = 1 * 6561
+
+call stack 5 mystery(43046721, 0)
+return 1
+----
