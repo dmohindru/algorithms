@@ -37,6 +37,7 @@ public class Exercise32 {
 
         StdDraw.setXscale(-50, 2000);
         StdDraw.setYscale(-50, 1000);
+        new Object();
 
         for (int i = 0; i < histrogram.length; i++) {
             double x = startX + (width + gap) * i  + (width / 2);

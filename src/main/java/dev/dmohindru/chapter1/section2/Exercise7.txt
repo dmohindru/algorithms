@@ -1,0 +1,20 @@
+1.2.7
+
+
+call stack 1 -- mystery("abc")
+return mystery("bc") + mystery("a") = cb + a = cba
+
+call stack 2 -- mystery("bc")
+return mystery("c") + mystery("b") = c + b = cb
+
+call stack 3 -- mystery("c")
+return "c"
+
+call stack 4 -- mystery("b")
+return "b"
+
+call stack 5 -- mystery("a")
+return "a"
+
+
+It reversed a string
