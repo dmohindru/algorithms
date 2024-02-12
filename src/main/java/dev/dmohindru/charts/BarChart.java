@@ -9,4 +9,9 @@ public class BarChart extends Chart{
     protected void renderDataPoints() {
 
     }
+
+    @Override
+    protected void renderLabels() {
+
+    }
 }

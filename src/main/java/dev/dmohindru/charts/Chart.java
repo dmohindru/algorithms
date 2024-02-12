@@ -17,6 +17,8 @@ public abstract class Chart {
     protected final double horizontalDivision = 0.15;
     protected final double verticalDivision = 0.20;
 
+    protected double rangeMax;
+
     public Chart(String title, String xLabel, String yLabel) {
         this.title = title;
         this.xLabel = xLabel;
@@ -43,12 +45,57 @@ public abstract class Chart {
         StdDraw.text(-100, 400, this.yLabel, 90.00);
         // x axis label
         StdDraw.text(600, -100, this.xLabel);
+
+        // max x range calculation
+        double xRangeMax = canvasWidth * (1 - horizontalDivision) * 0.95;
+        double yRangeMax = canvasHeight * (1 - verticalDivision) * 0.95;
+        rangeMax = Math.min(xRangeMax, yRangeMax);
     }
 
     public void setChartData(ChartData[] chartData) {
         this.chartData = chartData;
+        renderLabels();
         renderDataPoints();
     }
 
+    public ChartData[] getInterpolatedData() {
+        double minValue = Double.MAX_VALUE;
+        double maxValue = Double.MIN_VALUE;
+        for (int i = 0; i < chartData.length; i++) {
+                // Min value loop
+                if (chartData[i].getMinRage() < minValue) {
+                    minValue = chartData[i].getMinRage();
+                }
+
+                // Max value loop
+                if (chartData[i].getMaxRange() > maxValue) {
+                    maxValue = chartData[i].getMaxRange();
+                }
+        }
+
+        double slope = (rangeMax) / (maxValue - minValue);
+        ChartData[] interpolatedData = new ChartData[chartData.length];
+        for (int i = 0; i < chartData.length; i++) {
+            double[][] interpolatedDataPoints = new double[chartData[i].getDataPoints().length][2];
+            for (int j = 0; j < chartData[i].getDataPoints().length; j++) {
+                // x value
+                interpolatedDataPoints[j][0] = ((chartData[i].getDataPoints()[j][0] - minValue) * slope) + 0.0;
+                // y value
+                interpolatedDataPoints[j][1] = ((chartData[i].getDataPoints()[j][1] - minValue) * slope) + 0.0;
+            }
+            interpolatedData[i] = new ChartData(
+                    interpolatedDataPoints,
+                    chartData[i].getLabel(),
+                    chartData[i].getColor(),
+                    0,
+                    rangeMax);
+        }
+
+
+        return interpolatedData;
+    }
+
     protected abstract void renderDataPoints();
+
+    protected abstract void renderLabels();
 }
