@@ -22,7 +22,16 @@ public class LineChart extends Chart {
     @Override
     protected void renderDataPoints() {
         ChartData[] interpolatedData = getInterpolatedData();
-        System.out.println();
+//        double[] previousPoint = { 0.0, 0.0 };
+        for (int i = 0; i < interpolatedData.length; i++) {
+            StdDraw.setPenColor(interpolatedData[i].getColor());
+            double[] previousPoint = { 0.0, 0.0 };
+            for (int j = 0; j < interpolatedData[i].getDataPoints().length; j++) {
+                double[] currentPoint = interpolatedData[i].getDataPoints()[j];
+                StdDraw.line(previousPoint[0], previousPoint[1], currentPoint[0], currentPoint[1]);
+                previousPoint = currentPoint;
+            }
+        }
 
     }
 
