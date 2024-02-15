@@ -1,4 +1,4 @@
-package dev.dmohindru.jfreechart;
+package dev.dmohindru.jfreechart.barchart;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;

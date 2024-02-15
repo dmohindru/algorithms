@@ -108,7 +108,7 @@ public class LineChart extends JFrame {
                 xAxisLabel,
                 yAxisLabel,
                 dataset,
-                PlotOrientation.HORIZONTAL,
+                PlotOrientation.VERTICAL,
                 true,
                 false,
                 false);

@@ -1,6 +1,6 @@
 package dev.dmohindru.jfreechart;
 
-import dev.dmohindru.jfreechart.linechart.LineChart;
+import dev.dmohindru.jfreechart.barchart.BarChart;
 
 public class Main {
     public static void main(String[] args) {
