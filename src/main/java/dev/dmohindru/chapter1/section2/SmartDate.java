@@ -21,6 +21,26 @@ public class SmartDate {
         }
     }
 
+    public SmartDate(String date) {
+        String[] split = date.split("/");
+        if (split.length != 3) {
+            throw new IllegalArgumentException(String.format("Invalid date format [%s]", date));
+        }
+        try {
+            int month = Integer.parseInt(split[0]);
+            int day = Integer.parseInt(split[1]);
+            int year = Integer.parseInt(split[2]);
+            if (!isValid(day, month, year)) {
+                throw new IllegalArgumentException(String.format("Invalid date format [%s]", date));
+            }
+            this.day = day;
+            this.month = month;
+            this.year = year;
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException(String.format("Invalid date format [%s]", date));
+        }
+    }
+
     private boolean isValid(int day, int month, int year) {
 
         return year >= 1 && month >= 1 && month <= 12 && day >= 1 && day <= maxMonthDays[month - 1];

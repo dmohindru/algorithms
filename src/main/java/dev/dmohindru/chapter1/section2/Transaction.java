@@ -14,6 +14,42 @@ public class Transaction {
         this.amount = amount;
     }
 
+    public Transaction(String transaction) {
+        String[] transactionToken = transaction.split(" ");
+        if (transactionToken.length != 3) {
+            throw new IllegalArgumentException("Invalid transaction format: " + transaction);
+        }
+        String[] dateToken = transactionToken[1].split("/");
+
+        // Set name
+        this.name = transactionToken[0];
+
+        // Set Date
+        if (dateToken.length != 3) {
+            throw new IllegalArgumentException("Invalid date format: " + transactionToken[1]);
+        }
+        try {
+            int month = Integer.parseInt(dateToken[0]);
+            int day = Integer.parseInt(dateToken[1]);
+            int year = Integer.parseInt(dateToken[2]);
+
+
+            this.date = new Date(month, day, year);
+
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException("Invalid date format: " + transactionToken[1]);
+        }
+
+        // Set Amount
+        try {
+            double amount = Double.parseDouble(transactionToken[2]);
+            this.amount = amount;
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException("Invalid transaction format: " + transaction);
+        }
+
+    }
+
     public String getName() {
         return name;
     }
