@@ -1,4 +1,4 @@
-package dev.dmohindru.chapter1.extras;
+package dev.dmohindru.extras;
 
 import dev.dmohindru.jfreechart.linechart.LineChart;
 import dev.dmohindru.jfreechart.linechart.LineChartDataset;
